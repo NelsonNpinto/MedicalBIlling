@@ -1,7 +1,7 @@
 // src/pages/BlogPost.jsx
-import { useEffect, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import blogData from '../data/blogData'
+import { useEffect, useState, useRef } from 'react'
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom'
+import blogData from '../../../src/data/blogData'
 
 const BlogPost = () => {
   const { postId } = useParams()
@@ -9,6 +9,22 @@ const BlogPost = () => {
   const [relatedPosts, setRelatedPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
+  const location = useLocation()
+  const contentRef = useRef(null)
+  
+  // Handle anchor scroll after content loads
+  useEffect(() => {
+    if (!isLoading && location.hash) {
+      const id = location.hash.substring(1) // remove the # character
+      const element = document.getElementById(id)
+      if (element) {
+        // Scroll to the element with a slight delay to ensure rendering
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+  }, [isLoading, location.hash])
   
   useEffect(() => {
     setIsLoading(true)
@@ -33,12 +49,48 @@ const BlogPost = () => {
       
       setIsLoading(false)
       
-      // Scroll to top when post changes
-      window.scrollTo(0, 0)
+      // Scroll to top when post changes, but only if there's no hash
+      if (!location.hash) {
+        window.scrollTo(0, 0)
+      }
     }, 500)
     
     return () => clearTimeout(timer)
-  }, [postId, navigate])
+  }, [postId, navigate, location.hash])
+  
+  // Process blog content to add IDs to headings for anchor links
+  useEffect(() => {
+    if (post && contentRef.current) {
+      // Add IDs to all headings in the content for anchor navigation
+      const headings = contentRef.current.querySelectorAll('h1, h2, h3, h4, h5, h6')
+      
+      headings.forEach(heading => {
+        if (!heading.id) {
+          // Create an ID from the heading text
+          const id = heading.textContent
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '')
+          
+          heading.id = id
+          
+          // Optionally, make the heading clickable to copy the link
+          heading.style.cursor = 'pointer'
+          heading.addEventListener('click', (e) => {
+            e.preventDefault()
+            const url = `${window.location.pathname}#${id}`
+            navigate(url, { replace: true })
+            
+            // Optionally, add a visual indication that the URL was updated
+            heading.classList.add('anchor-active')
+            setTimeout(() => {
+              heading.classList.remove('anchor-active')
+            }, 1000)
+          })
+        }
+      })
+    }
+  }, [post, navigate])
   
   if (isLoading) {
     return (
@@ -107,10 +159,24 @@ const BlogPost = () => {
       
       {/* Blog Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+        {/* Table of Contents (Optional) */}
+        {post.showTableOfContents && (
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 className="text-xl font-bold mb-4">Table of Contents</h2>
+            <div id="table-of-contents">
+              {/* This will be automatically populated by JavaScript */}
+            </div>
+          </div>
+        )}
+        
         <div className="bg-white rounded-lg shadow-md p-6 md:p-10">
           <div className="prose prose-lg max-w-none">
-            {/* Render HTML content from the blog post */}
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/* Render HTML content from the blog post with ref to access DOM */}
+            <div 
+              ref={contentRef} 
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              className="anchor-headings" // Add a class for potential styling
+            />
           </div>
           
           {/* Tags */}
@@ -182,7 +248,7 @@ const BlogPost = () => {
         
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-16" id="related-posts">
             <h3 className="text-2xl font-bold mb-6">Related Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map(related => (
@@ -253,7 +319,7 @@ const BlogPost = () => {
         </div>
         
         {/* Comment Section (Placeholder) */}
-        <div className="mt-16 bg-white rounded-lg shadow-md p-6">
+        <div className="mt-16 bg-white rounded-lg shadow-md p-6" id="comments">
           <h3 className="text-xl font-bold mb-6">Comments</h3>
           
           <div className="mb-8">
@@ -327,7 +393,7 @@ const BlogPost = () => {
         </div>
         
         {/* Newsletter Section */}
-        <div className="mt-16 bg-white rounded-lg shadow-md p-6">
+        <div className="mt-16 bg-white rounded-lg shadow-md p-6" id="subscribe">
           <div className="text-center">
             <h3 className="text-xl font-bold mb-3">Stay Updated</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -376,6 +442,36 @@ const BlogPost = () => {
       </div>
     </div>
   )
+}
+
+// Function to generate automatic table of contents (can be added to an effect)
+function generateTableOfContents() {
+  const contentDiv = document.querySelector('.prose')
+  if (!contentDiv) return
+  
+  const headings = Array.from(contentDiv.querySelectorAll('h2, h3'))
+  if (headings.length === 0) return
+  
+  const tocContainer = document.getElementById('table-of-contents')
+  if (!tocContainer) return
+  
+  const toc = document.createElement('ul')
+  toc.className = 'toc-list space-y-2'
+  
+  headings.forEach(heading => {
+    const listItem = document.createElement('li')
+    listItem.className = heading.tagName === 'H3' ? 'ml-4' : ''
+    
+    const link = document.createElement('a')
+    link.href = `#${heading.id}`
+    link.textContent = heading.textContent
+    link.className = 'text-blue-600 hover:underline'
+    
+    listItem.appendChild(link)
+    toc.appendChild(listItem)
+  })
+  
+  tocContainer.appendChild(toc)
 }
 
 export default BlogPost

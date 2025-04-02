@@ -1,9 +1,12 @@
 // src/pages/Home.jsx
-import Hero from "../components/landing page/Hero";
-import Services from "../../medical-billing/src/components/Services";
-import About from "../components/About";
-import Contact from "../components/Contact";
-import Blog from "../components/Blog";
+import Hero from "../landing page/Hero";
+import Services from "../Services";
+import About from "../About";
+import Contact from "../Contact";
+import Blog from "../Blog page/BlogPage";
+import EhrCompatibility from "../EhrCompatibility";
+import DiscoverHelp from "../DiscoverHelp";
+import CustomerReviews from "../CustomerReviews";
 
 const Home = () => {
   return (
@@ -11,19 +14,24 @@ const Home = () => {
       <section id="home">
         <Hero />
       </section>
-      
+
       <section id="services">
         <Services />
+
+        <EhrCompatibility />
+
+        <DiscoverHelp />
+
+        <CustomerReviews />
       </section>
-      
       <section id="about">
         <About />
       </section>
-      
-      <section id="blog">
+
+      {/* <section id="blog">
         <Blog />
-      </section>
-      
+      </section> */}
+
       <section id="contact">
         <Contact />
       </section>
