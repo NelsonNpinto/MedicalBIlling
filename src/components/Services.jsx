@@ -1,72 +1,70 @@
 import React from 'react'
+import { Shield, CheckCircle, AlertTriangle } from 'lucide-react'
 import ServiceCard from './ServiceCard'
 
 const Services = () => {
   const services = [
     {
       id: 1,
-      title: "Prior Authorization Expertise",
-      description: "Streamline complex approval processes with our specialized prior authorization services. We meticulously handle documentation, submission, and proactive follow-up to maximize your claim success rates.",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
+      title: "Eligibility Verification",
+      description: "Verifying insurance eligibility is one of the most critical steps in the medical billing process. Patient insurance verification plays a key role in any healthcare specialty's claims denials. DataMatrix provides an efficient, scalable, and economical solution for your needs.",
+      icon: <Shield className="w-6 h-6 text-white" />,
       features: [
-        "Comprehensive pre-authorization analysis",
-        "Real-time insurance guideline tracking",
-        "Detailed documentation preparation",
-        "Proactive claim submission support"
+        "Real-time insurance verification",
+        "Patient benefit coverage analysis",
+        "Copay and deductible identification",
+        "Pre-visit eligibility confirmation",
+        "Multi-payer verification support"
       ]
     },
     {
       id: 2,
-      title: "Advanced Denial Management",
-      description: "Recover lost revenue and minimize future denials with our forensic approach. We dive deep into root causes, develop strategic appeals, and implement preventive measures.",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        </svg>
-      ),
+      title: "Prior Authorization",
+      description: "Obtaining prior Authorization for services can burden staff, but this is critical for reimbursement. If prior Authorization is not performed, clinicians may find that they have performed unnecessary or duplicative services. Let DataMatrix provide this service.",
+      icon: <CheckCircle className="w-6 h-6 text-white" />,
       features: [
-        "Comprehensive denial root cause analysis",
-        "Strategic appeal development",
-        "Claims reprocessing optimization",
-        "Ongoing denial prevention strategies"
+        "Comprehensive pre-authorization analysis",
+        "Insurance guideline compliance tracking",
+        "Clinical documentation preparation",
+        "Submission and follow-up management",
+        "Appeal process coordination"
       ]
     },
     {
       id: 3,
-      title: "Comprehensive Revenue Cycle Management",
-      description: "Transform your financial performance with our end-to-end revenue cycle management. We provide intelligent, data-driven solutions that optimize every stage of your billing process.",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        </svg>
-      ),
+      title: "Denial Management",
+      description: "Our systematic approach to denial management helps healthcare providers recover lost revenue and reduce future claim rejections. We analyze denial patterns, develop targeted solutions, and implement preventive strategies to optimize your revenue cycle.",
+      icon: <AlertTriangle className="w-6 h-6 text-white" />,
       features: [
-        "Intelligent eligibility verification",
-        "Automated claim submission & tracking",
-        "Advanced payment posting",
-        "Predictive accounts receivable management"
+        "Root cause denial analysis",
+        "Strategic appeal development",
+        "Claims resubmission processing",
+        "Denial trend reporting",
+        "Prevention strategy implementation"
       ]
     }
   ]
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+    <section id="services" className="py-24 bg-gradient-to-br from-gray-100 via-gray-50 to-blue-50 relative overflow-hidden">
+      {/* Background pattern overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px), 
+                           radial-gradient(circle at 75% 75%, #6366f1 2px, transparent 2px)`,
+          backgroundSize: '60px 60px'
+        }}></div>
       </div>
-
+      
+      {/* Floating background elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-indigo-200/20 rounded-full blur-xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-purple-200/20 rounded-full blur-xl"></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
-            Precision Medical Billing Solutions
+            AIQuantTech Medical Billing Solutions
           </h2>
           <p className="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
             Empowering healthcare providers with cutting-edge revenue cycle management, 
@@ -89,21 +87,19 @@ const Services = () => {
         <div className="mt-16 text-center">
           <a
             href="#contact"
-            className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-700 
-            text-white px-8 py-4 rounded-full shadow-xl hover:shadow-2xl 
-            transition-all duration-300 transform hover:scale-105 
-            hover:rotate-2 focus:outline-none focus:ring-2 focus:ring-offset-2 
-            focus:ring-blue-500"
+            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 
+            hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 
+            rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+            transform hover:scale-105"
             aria-label="Schedule a consultation"
           >
             <span className="text-lg font-semibold mr-3">Schedule Consultation</span>
             <svg 
-              className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" 
+              className="w-5 h-5" 
               fill="none" 
               viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              xmlns="http://www.w3.org/2000/svg" 
-              aria-hidden="true"
+              stroke="currentColor"
             >
               <path 
                 strokeLinecap="round" 

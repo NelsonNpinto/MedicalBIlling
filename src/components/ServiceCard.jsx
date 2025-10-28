@@ -3,20 +3,15 @@ import React from 'react'
 const ServiceCard = ({ title, description, icon, features }) => {
   return (
     <div className="group relative transform transition-all duration-300 hover:-translate-y-2">
-      {/* Background gradient overlay */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 
-        rounded-xl opacity-50 group-hover:opacity-75 
-        transition duration-300 blur-sm group-hover:blur-lg"></div>
-      
       {/* Card content */}
-      <div className="relative bg-white rounded-xl shadow-lg overflow-hidden h-full
-        transition-all duration-300 group-hover:shadow-2xl">
+      <div className="relative bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden h-full
+        transition-all duration-300 border border-gray-100">
         <div className="p-6 flex flex-col h-full">
           {/* Icon and Title */}
           <div className="flex items-center mb-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 
-              rounded-full flex items-center justify-center mr-4
-              transition-transform duration-300 group-hover:rotate-12">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mr-4
+              transition-all duration-300"
+              style={{ backgroundColor: '#007aff' }}>
               {icon}
             </div>
             <h3 className="text-xl font-bold text-gray-900 
@@ -37,12 +32,10 @@ const ServiceCard = ({ title, description, icon, features }) => {
               {features.map((feature, index) => (
                 <li 
                   key={index} 
-                  className="flex items-center text-sm text-gray-600
-                    transition-transform duration-300 group-hover:translate-x-2"
+                  className="flex items-center text-sm text-gray-600"
                 >
                   <svg 
-                    className="w-5 h-5 mr-3 text-blue-500
-                      transition-transform duration-300 group-hover:rotate-45" 
+                    className="w-5 h-5 mr-3 text-blue-500 flex-shrink-0" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24" 
@@ -62,13 +55,18 @@ const ServiceCard = ({ title, description, icon, features }) => {
           </div>
 
           {/* Learn More Button */}
-          <div className="mt-4 opacity-0 group-hover:opacity-100 
-            transition-opacity duration-300 text-center">
+          <div className="mt-6 text-center">
             <a 
               href="#contact" 
-              className="inline-block bg-gradient-to-r from-blue-600 to-purple-700 
-              text-white px-4 py-2 rounded-lg text-sm font-semibold
-              hover:shadow-lg transition-all duration-300"
+              className="inline-block text-white px-6 py-2 rounded-lg text-sm font-semibold
+              shadow-md hover:shadow-lg transition-all duration-300"
+              style={{ backgroundColor: '#007aff' }}
+              onMouseEnter={e => {
+                e.target.style.backgroundColor = '#0056cc';
+              }}
+              onMouseLeave={e => {
+                e.target.style.backgroundColor = '#007aff';
+              }}
             >
               Learn More
             </a>
