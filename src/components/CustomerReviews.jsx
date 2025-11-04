@@ -77,10 +77,22 @@ const CustomerReviews = () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+   const [isMobile, setIsMobile] = useState(false);
+  
   
   // Calculate total pages (2 cards per page, with last page showing remaining cards)
-  const cardsPerPage = 2;
+  const cardsPerPage = isMobile ? 1 : 2;
   const totalPages = Math.ceil(testimonials.length / cardsPerPage);
+
+  useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+  
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  return () => window.removeEventListener('resize', checkMobile);
+}, []);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -150,7 +162,7 @@ const CustomerReviews = () => {
                 
                 return (
                   <div key={pageIndex} className="w-full flex-shrink-0 px-2">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
                       {pageTestimonials.map((testimonial) => (
                         <TestimonialCard
                           key={testimonial.id}
