@@ -53,7 +53,7 @@ const Services = () => {
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px), 
                            radial-gradient(circle at 75% 75%, #6366f1 2px, transparent 2px)`,
-          backgroundSize: '60px 60px'
+          backgroundSize: '60px 60px' 
         }}></div>
       </div>
       
