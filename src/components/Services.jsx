@@ -1,6 +1,7 @@
 import React from 'react'
 import { Shield, CheckCircle, AlertTriangle } from 'lucide-react'
 import ServiceCard from './ServiceCard'
+import ScrollReveal from './animations/ScrollReveal'
 
 const Services = () => {
   const services = [
@@ -59,18 +60,31 @@ const Services = () => {
       {/* Floating background elements */}
       <div className="absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"></div>
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-indigo-200/20 rounded-full blur-xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-purple-200/20 rounded-full blur-xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
-            AIQuantTech Medical Billing Solutions
-          </h2>
-          <p className="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
-            Empowering healthcare providers with cutting-edge revenue cycle management, 
-            we transform complex billing challenges into strategic financial opportunities.
-          </p>
-        </div>
+    <div className="text-center mb-16">
+  <ScrollReveal
+    baseOpacity={0}
+    enableBlur={true}
+    baseRotation={5}
+    blurStrength={10}
+    containerClassName="mb-4 flex justify-center"
+    textClassName="text-4xl font-extrabold text-gray-900 sm:text-5xl text-center"
+  >
+    AIQuantTech Medical Billing Solutions
+  </ScrollReveal>
+
+  <ScrollReveal
+    baseOpacity={0}
+    enableBlur={true}
+    baseRotation={3}
+    blurStrength={8}
+    containerClassName="flex justify-center"
+    textClassName="max-w-3xl text-xl text-gray-600 leading-relaxed text-center"
+  >
+    Empowering healthcare providers with cutting-edge revenue cycle management, we transform complex billing challenges into strategic financial opportunities.
+  </ScrollReveal>
+</div>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (

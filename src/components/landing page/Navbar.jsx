@@ -74,8 +74,14 @@ const Navbar = () => {
   }, [location]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  if (isMenuOpen) {
+    // When closing, hide menu content first, then change shape
+    setIsMenuOpen(false);
+  } else {
+    // When opening, change shape immediately
+    setIsMenuOpen(true);
+  }
+};
 
   // Smooth scroll function for home page sections
   const scrollToSection = sectionId => {
@@ -106,14 +112,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-auto bg-white/95 backdrop-blur-md shadow-xl rounded-full border border-gray-200/20 transition-all duration-300 ease-in-out ${
-        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-      }`}
-      style={{
-        boxShadow:
-          '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      }}>
+  <nav
+  className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-auto lg:w-auto w-[95%] bg-white/95 backdrop-blur-md shadow-xl rounded-3xl border border-gray-200/20 ${
+    isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+  }`}
+  style={{
+    boxShadow:
+      '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
+  }}>
       <div className="px-1 py-1">
         <div className="flex justify-between items-center">
           {/* Text Logo */}
@@ -235,10 +242,21 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-        <div className="px-6 pt-2 pb-6 space-y-2 rounded-b-2xl border-t bg-white/95 backdrop-blur-md border-gray-200/20">
+        className={`lg:hidden overflow-hidden ${
+          isMenuOpen ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          maxHeight: isMenuOpen ? '320px' : '0px',
+          transition: 'max-height 0.3s ease-out, opacity 0.2s ease-out',
+          transformOrigin: 'top',
+        }}>
+        <div
+          className="px-6 pt-2 pb-6 space-y-2 border-t bg-white/95 backdrop-blur-md border-gray-200/20"
+          style={{
+            transform: isMenuOpen ? 'scaleY(1)' : 'scaleY(0)',
+            transformOrigin: 'top',
+            transition: 'transform 0.3s ease-out',
+          }}>
           <Link
             to="/"
             className={`block px-4 py-3 rounded-lg text-[14px] font-semibold transition-all duration-300 ${
