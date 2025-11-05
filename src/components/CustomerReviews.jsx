@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 const TestimonialCard = ({ name, position, quote, rating }) => {
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 flex flex-col h-full group">
+     <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-gray-200 flex flex-col h-full group">
       {/* Quote mark */}
-      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300">
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform duration-300">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"></path>
         </svg>
       </div>
       
       {/* Star rating */}
-      <div className="flex mb-4">
+      <div className="flex mb-3">
         {Array.from({ length: 5 }).map((_, index) => (
           <svg 
             key={index} 
-            className={`w-5 h-5 ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`} 
+            className={`w-4 h-4 ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`} 
             fill="currentColor" 
             viewBox="0 0 20 20"
           >
@@ -25,12 +25,12 @@ const TestimonialCard = ({ name, position, quote, rating }) => {
       </div>
       
       {/* Quote text */}
-      <p className="text-gray-600 text-lg leading-relaxed mb-6 flex-grow italic">"{quote}"</p>
+      <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow italic">"{quote}"</p>
       
       {/* Customer info */}
-      <div className="border-t border-gray-200 pt-4">
-        <h4 className="font-bold text-gray-900 text-lg">{name}</h4>
-        <p className="text-gray-600">{position}</p>
+      <div className="border-t border-gray-200 pt-3">
+        <h4 className="font-bold text-gray-900 text-base">{name}</h4>
+        <p className="text-gray-600 text-sm">{position}</p>
       </div>
     </div>
   );
