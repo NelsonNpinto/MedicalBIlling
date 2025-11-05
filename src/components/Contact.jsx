@@ -240,7 +240,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Info Section */}
-        <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+        <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="w-14 h-14 mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl flex items-center justify-center mb-4">
               <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -248,7 +248,7 @@ const Contact = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Call Us</h3>
-            <p className="text-gray-600">+1 (555) 123-4567</p>
+            <p className="text-gray-600">+91 9834350501</p>
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 p-6 text-center hover:shadow-xl transition-shadow duration-300">
@@ -258,19 +258,10 @@ const Contact = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Email</h3>
-            <p className="text-gray-600">support@aiquanttech.com</p>
+            <p className="text-gray-600">nelsonpwork007@gmail.com</p>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 p-6 text-center hover:shadow-xl transition-shadow duration-300">
-            <div className="w-14 h-14 mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Address</h3>
-            <p className="text-gray-600">123 Medical Lane, Suite 450</p>
-          </div>
+         
         </div>
       </div>
     </section>

@@ -113,7 +113,7 @@ const Navbar = () => {
 
   return (
   <nav
-  className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-auto lg:w-auto w-[95%] bg-white/95 backdrop-blur-md shadow-xl rounded-3xl border border-gray-200/20 ${
+  className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-100% lg:w-auto w-[95%] bg-white/95 backdrop-blur-md shadow-xl rounded-3xl border border-gray-200/20 ${
     isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
   }`}
   style={{

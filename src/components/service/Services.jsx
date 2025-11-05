@@ -1,7 +1,7 @@
 import React from 'react'
 import { Shield, CheckCircle, AlertTriangle } from 'lucide-react'
 import ServiceCard from './ServiceCard'
-import ScrollReveal from './animations/ScrollReveal'
+import ScrollReveal from '../animations/ScrollReveal'
 
 const Services = () => {
   const services = [
@@ -129,4 +129,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Services 

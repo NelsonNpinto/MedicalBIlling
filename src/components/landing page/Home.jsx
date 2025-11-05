@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 import Hero from "../landing page/Hero";
-import Services from "../Services";
+import Services from "../service/Services";
 import About from "../About";
 import Contact from "../Contact";
 import Blog from "../Blog page/BlogPage";

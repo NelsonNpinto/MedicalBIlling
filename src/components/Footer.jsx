@@ -19,7 +19,7 @@ const Footer = () => {
           />
         </svg>
       ),
-      text: '+1 (555) 123-4567',
+      text: '+91 9534350501',
     },
     {
       id: 2,
@@ -38,33 +38,9 @@ const Footer = () => {
           />
         </svg>
       ),
-      text: 'support@AiQuantTech.com',
+      text: 'nelsonpwork007@gmail.com',
     },
-    {
-      id: 3,
-      icon: (
-        <svg
-          className="h-6 w-6 text-blue-500 mr-3"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      ),
-      text: '123 Medical Plaza, Suite 450\nNew York, NY 10001',
-    },
+    
   ];
 
   const quickLinks = [
@@ -138,7 +114,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-white mb-6">
               Contact Us
             </h3>
@@ -152,10 +128,10 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Quick Links */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-white mb-6">
               Quick Links
             </h3>
@@ -186,7 +162,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Copyright */}
